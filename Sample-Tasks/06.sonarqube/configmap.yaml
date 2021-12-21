@@ -1,0 +1,10 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: msa-containerapp-java-employeeapi-setting
+  namespace: cicd
+data:
+  sonar-project.properties: |-
+    sonar.login=51661411d01e29fc3810992c2ad4dc5847537bb3
+    sonar.java.binaries=target 
+#sonar.java.binaried의 경우 자바 컴파일 시에만 추가

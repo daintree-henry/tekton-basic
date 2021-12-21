@@ -1,0 +1,14 @@
+apiVersion: tekton.dev/v1beta1
+kind: TaskRun
+metadata:
+  name: buildah-build-and-push-run
+spec:
+  taskRef:
+    name: buildah
+  params:
+  - name: IMAGE
+    value: docker.io/dainforest/cicd-test:v1
+  workspaces:
+  - name: source
+    persistentVolumeClaim:
+      claimName: git-source 

@@ -1,0 +1,14 @@
+apiVersion: tekton.dev/v1beta1
+kind: TaskRun
+metadata:
+  name: maven-run
+spec:
+  taskRef:
+    name: maven
+  workspaces:
+    - name: maven-settings
+      configMap:
+        name: custom-maven-settings
+    - name: source
+      persistentvolumeclaim:
+        claimName: git-source

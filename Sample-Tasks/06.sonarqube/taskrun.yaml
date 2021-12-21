@@ -1,0 +1,20 @@
+---
+apiVersion: tekton.dev/v1beta1
+kind: TaskRun
+metadata:
+  name: sonarqube-run
+spec:
+  taskRef:
+    name: sonarqube-scanner
+  workspaces:
+    - name: source-dir
+      persistentVolumeClaim:
+        claimName: git-source      
+    - name: sonar-settings
+      configmap:
+        name: msa-containerapp-java-employeeapi-setting
+  params:
+    - name: SONAR_HOST_URL
+      value: "http://sonarqube.apps.cicd.kolonocp4.com/"
+    - name: SONAR_PROJECT_KEY
+      value: "msa-containerapp-java-employeeapi"
